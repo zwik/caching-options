@@ -1,0 +1,28 @@
+{
+  "name": "cachingoptions",
+  "version": "1.0.0",
+  "description": "A small project to test various caching mechanisms",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint index.js"
+  },
+  "author": {
+    "name": "Marcel van den Bosch",
+    "email": "m.v.d.bosch@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "flat-cache": "^3.0.4",
+    "memcached": "^2.2.2",
+    "memory-cache": "^0.2.0",
+    "redis": "^3.1.2",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.0"
+  }
+}
