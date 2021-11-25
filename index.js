@@ -51,23 +51,24 @@ const memcachedMiddledware = (duration) => (req, res, next) => {
 };
 
 const client = redis.createClient();
+(async () => {
+  await client.connect();
+})();
 // eslint-disable-next-line no-unused-vars
-const redisMiddleware = (req, res, next) => {
+const redisMiddleware = async (req, res, next) => {
   const key = `__express__${req.originalUrl || req.url}`;
-  client.get(key, (err, reply) => {
-    if (reply) {
-      res.setHeader('Content-Type', 'application/json; charset=utf-8');
-      res.send(JSON.parse(reply));
-      return;
-    }
-
-    res.sendResponse = res.send;
-    res.send = (body) => {
-      client.set(key, JSON.stringify(body));
-      res.sendResponse(body);
-    };
-    next();
-  });
+  const reply = await client.get(key);
+  if (reply) {
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.send(JSON.parse(reply));
+    return;
+  }
+  res.sendResponse = res.send;
+  res.send = async (body) => {
+    await client.set(key, JSON.stringify(body));
+    res.sendResponse(body);
+  };
+  next();
 };
 
 const cache = flatCache.load('productsCache', path.resolve('./cache'));
@@ -96,7 +97,7 @@ const app = express();
 // memcachedMiddledware(duration)
 // redisMiddleware
 // flatCacheMiddleware
-app.get('/products', cacheMiddleware(20), (req, res) => {
+app.get('/products', redisMiddleware, (req, res) => {
   setTimeout(() => {
     const db = new sqlite3.Database('./Products.db');
     const sql = 'SELECT * FROM products';
