@@ -50,6 +50,7 @@ const memcachedMiddledware = (duration) => (req, res, next) => {
   });
 };
 
+// The redis client also accepts a valkey server currently
 const client = redis.createClient();
 (async () => {
   await client.connect();

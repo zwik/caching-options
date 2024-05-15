@@ -4,10 +4,10 @@ The idea is to simulate a long query, I do this by doing an actual query and giv
 
 A small SQLite3 database is provided.
 
-I've included a `docker-compose.yml` file to start a Memcached and Redis server. You can start these by typing `docker-compose up` in your terminal.
+I've included a `docker-compose.yml` file to start a Memcached and Valkey server. You can start these by typing `docker-compose up` in your terminal.
 
 The following options can be tested with this application:
 - memory-cache
 - Memcached
-- Redis
+- Valkey/Redis
 - flat-cache
