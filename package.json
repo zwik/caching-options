@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.21.0",
-    "flat-cache": "^5.0.0",
+    "flat-cache": "^6.1.0",
     "memcached": "^2.2.2",
     "memory-cache": "^0.2.0",
     "redis": "^4.7.0",
