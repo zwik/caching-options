@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "express": "^4.21.2",
+    "express": "^5.1.0",
     "flat-cache": "^6.1.8",
     "memcached": "^2.2.2",
     "memory-cache": "^0.2.0",
