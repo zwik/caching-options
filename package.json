@@ -17,7 +17,7 @@
     "flat-cache": "^6.1.12",
     "memcached": "^2.2.2",
     "memory-cache": "^0.2.0",
-    "redis": "^5.7.0",
+    "redis": "^5.8.1",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
